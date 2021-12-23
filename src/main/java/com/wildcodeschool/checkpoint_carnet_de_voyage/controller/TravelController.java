@@ -11,18 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class CarnetController {
+public class TravelController {
     @Autowired
     private TravelRepository travelRepository;
 
     @GetMapping("/travel")
     public String getTravel(Model model, @RequestParam(required = false) Long id) {
-
         Travel travel = new Travel();
         if (id != null) {
             travel = travelRepository.getById(id);
         }
-        model.addAttribute("wizard", travel);
+        model.addAttribute("travel", travel);
 
         return "/travel";
     }
